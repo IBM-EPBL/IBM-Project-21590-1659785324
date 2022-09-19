@@ -1,0 +1,123 @@
+html{
+    font-size: 100%;
+    box-sizing: border-box;
+}
+
+*,*::after,*::before{
+    box-sizing: inherit;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.hero{
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    row-gap: 14px;
+    align-items: center;
+    justify-content: center;
+}
+.hero::after{
+    content: "";
+    position: absolute;
+    background-color: #000000;
+    background-size: cover;
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+}
+.hero::before{
+    content: "";
+    position: absolute;
+    background-image: url("./assets/hero.jpg");
+    background-color: #000000;
+    background-size: cover;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity:0.75;
+}
+.hero_intro{
+    position: relative;
+    text-align: center;
+    z-index: 1;
+}
+.name,.skills_intro{
+    color: #ffffff;  
+    margin: 0;
+}
+.name{
+    font-size: 30px;
+    margin-bottom: 6px;
+    letter-spacing:2px;
+}
+.skills_intro{
+    font-size: 18px;
+    font-weight: 600;
+}
+.profile-pic{
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    margin-bottom: 25px;
+}
+.dwn-cv{
+    padding: 12px;
+    border: none;
+    font-size: 14px;
+    border-radius: 25px;
+    margin-top: 25px;
+    background-color: #BD486D;
+    color: white;
+    cursor: pointer;
+}
+
+.social-logos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+    column-gap: 16px;
+}
+.social-logos > img{
+    width: 45px;
+    height: 45px;
+}
+
+.about{
+    display: flex;
+    column-gap: 75px;
+    justify-content: center;
+    margin: 30px 60px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 24px;
+}
+
+.self-intro{
+    flex: 1;
+    margin-right: 35px;
+    line-height: 24px;
+    text-align: justify;
+}
+.basic-info{
+    flex: 1;
+}
+.info-table{
+    display: flex;
+    column-gap: 30px;
+}
+.info-key p{
+    font-weight: 600;
+}
+.info-key p:not(:last-child),.info-value p:not(:last-child){
+    margin-bottom: 20px;
+}
