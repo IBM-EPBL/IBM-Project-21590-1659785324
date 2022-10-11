@@ -6,13 +6,13 @@
 
 **Team Leader** : SAMPATHKUMAR V
 
-**Team member** : SARAVANAN S
+**Team member** : SARAVANA KUMAR S
 
 **Team member** : RAVINDHRANATH S
 
-**Team member** : KAVIARASAN
+**Team member** : KAVIYARASAN A
 ___
-**Industry Mentor(s) Name** : Krishna Chaitanya
+**Industry Mentor(s) Name** : KRISHNA CHAITANYA
 
 **Faculty Mentor(s) Name** : SARASWATHI K
 ___
@@ -25,9 +25,9 @@ ___
 ___
 ## Assignment
  - [Team Leader : SAMPATHKUMAR V](https://github.com/IBM-EPBL/IBM-Project-21590-1659785324/tree/master/Assignments/Sampath)
- - [Team member : SARAVANAN S](https://github.com/IBM-EPBL/IBM-Project-21590-1659785324/tree/master/Assignments/Saravanan)
+ - [Team member : SARAVANA KUMAR S](https://github.com/IBM-EPBL/IBM-Project-21590-1659785324/tree/master/Assignments/Saravanan)
  - [Team member : RAVINDHRANATH S](https://github.com/IBM-EPBL/IBM-Project-21590-1659785324/tree/master/Assignments/Ravindhranath)
- - [Team member : KAVIARASAN](https://github.com/IBM-EPBL/IBM-Project-21590-1659785324/tree/master/Assignments/Kavi)
+ - [Team member : KAVIYARASAN A](https://github.com/IBM-EPBL/IBM-Project-21590-1659785324/tree/master/Assignments/Kavi)
 
 
 
