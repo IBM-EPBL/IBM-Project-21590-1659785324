@@ -1,0 +1,117 @@
+.resume {
+    border-radius: 10px;
+    margin-top: 25px;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+a{
+    text-decoration: none;
+}
+#name{
+    margin-bottom: -25px;
+}
+.contact{
+    align-items: center;
+    margin: 1% 39%;
+    padding: 5px;
+    border-radius: 15px;
+    text-align: center;
+    color: rgb(21, 1, 57);
+    border: 2px solid rgb(21, 1, 57);
+}
+.top {
+    background-color: rgb(21, 1, 57);
+    max-height: 190px;
+    border-radius: 10px;
+    padding: 30px;
+    color: #fff;
+}
+.person_img {
+    border: 4px solid rgb(255, 255, 255);
+    width: 100px;
+    height: auto;
+}
+.person_detail {
+    margin-left: -30px;
+}
+.name {
+    font-size: 22px;
+    font-weight: 900;
+}
+.section {
+    background-color: rgb(255, 255, 255);
+    margin: 0px 100px;
+    padding: 30px 100px;
+    border-radius: 10px;
+}
+
+.head_content {
+    text-align: left;
+    font-size: 22px;
+    font-weight: 500;
+}
+.head_icon {
+    text-align: right;
+    height: 20px;
+    width: auto;
+}
+.icon_right {
+    margin-left: 400px;
+}
+.role {
+    font-size: 20px;
+    font-weight: 900;
+    margin: 7px 0 14px 0;
+}
+.buttons {
+    display: inline;
+}
+#Download {
+    background-color: greenyellow;
+    border-radius: 50px;
+    color: #000;
+    font-size: 13px;
+}
+#hire_btn {
+    background-color: rgb(255, 255, 255);
+    border-radius: 50px;
+    font-size: 13px;
+    color: #000;
+}
+.center {
+    padding: 18px;
+}
+.about_me {
+    font-size: 16px;
+    font-weight: 1000;
+    margin: 10px 0;
+}
+.about_me_1 {
+    font-size: 11px;
+    font-weight: 900;
+}
+.left, .right {
+    font-size: 11px;
+    margin-top: 30px;
+}
+#line{
+    margin: 0 10px;
+    color: rgb(21, 1, 57);
+    font-weight: 900;
+}
+.below {
+    padding: 20px;
+    font-size: 12px;
+    font-weight: 500;
+}
+.Skills {
+    padding-top: 10px;
+    border-top: 3px solid;
+    font-size: 16px;
+     margin: 10px 0;
+     padding: 10px;
+}
+.css, .js ,.express,.python{
+    margin-top: 10px;
+}
