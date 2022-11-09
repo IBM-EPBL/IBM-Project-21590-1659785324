@@ -1,5 +1,5 @@
 from distutils.log import debug
-from flask import Flask, render_template
+from flask import Flask
 import ibm_db
 
 try:
