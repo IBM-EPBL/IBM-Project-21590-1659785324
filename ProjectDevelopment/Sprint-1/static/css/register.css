@@ -10,37 +10,6 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
-.nav_container{
-    display: flex;
-    padding: 20px;
-    background: black;
-    justify-content: space-between;
-}
-
-.navMenu{
-  align-self: center;
-  column-gap: 20px;
-  grid-template-columns: auto auto auto;
-  display: grid;
-}
-
-.navMenu a{
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-}
-
-.logo{
-  align-self: center;
-  padding-left: 25px;
-}
-
-.logo  a{
-  text-decoration: none;
-  color: white;
-}
-
 /* login css */
 
 .login-container {
@@ -59,7 +28,7 @@ body {
   left: 0;
   bottom: 0;
   right: 0;
-  background: url(./images/background.webp);
+  background: url(../images/background.webp);
   background-repeat: no-repeat;
   background-size: cover;
   opacity: 0.75;
@@ -97,7 +66,7 @@ body {
 .form button {
   text-transform: uppercase;
   outline: 0;
-  background: #4caf50;
+  background: #D19C97;
   width: 100%;
   border: 0;
   padding: 15px;
@@ -110,7 +79,7 @@ body {
 .form button:hover,
 .form button:active,
 .form button:focus {
-  background: #43a047;
+  background: #e78f87;
 }
 .form .message {
   margin: 15px 0 0;
@@ -118,7 +87,7 @@ body {
   font-size: 12px;
 }
 .form .message a {
-  color: #4caf50;
+  color: #D19C97;
   text-decoration: none;
 }
 .form .register-form {

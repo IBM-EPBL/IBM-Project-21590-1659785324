@@ -13,6 +13,9 @@ except:
 
 app = Flask(__name__,static_url_path='/static')
 app.secret_key = 'smartfashionrecommender'
+
+# check user session on every request
+
 @app.route('/')
 def home():
     # Check if user is loggedin
@@ -21,6 +24,10 @@ def home():
         return render_template('home.html', username=session['username'])
     # User is not loggedin redirect to login page
     return redirect(url_for('login'))
+
+@app.route('/shop')
+def shop():
+    return render_template('shop.html')
 
 @app.route('/login',methods=['GET','POST'])
 def login():
