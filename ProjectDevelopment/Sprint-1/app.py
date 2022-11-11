@@ -21,7 +21,20 @@ def home():
     # Check if user is loggedin
     if 'loggedin' in session:
         # User is loggedin show them the home page
-        return render_template('home.html', username=session['username'])
+        def getTrendy():
+            prods = []
+            sql = "SELECT * FROM PRODUCTS"
+            stmt = ibm_db.exec_immediate(conn,sql)
+            result = ibm_db.fetch_assoc(stmt)
+            while result != False:
+                print("The ID is : ", result["ID"])
+                print("The name is : ", result["NAME"])
+                prods.append(result)
+                result = ibm_db.fetch_assoc(stmt)
+            return prods
+        data = getTrendy()
+        return render_template('home.html', username=session['username'],Trendy_prod=data)
+
     # User is not loggedin redirect to login page
     return redirect(url_for('login'))
 
@@ -99,6 +112,7 @@ def sign_up():
         msg = 'Please fill out the form!'
     # Show registration form with message (if any)
     return render_template('sign_up.html', msg=msg)
+
     
 if __name__ == '__main__':
     app.run(debug=True)
