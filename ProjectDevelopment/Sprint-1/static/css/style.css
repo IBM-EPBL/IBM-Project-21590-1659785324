@@ -528,6 +528,7 @@
   .img-fluid {
     max-width: 100%;
     height: auto;
+    flex: 0 0 0;
   }
   
   .img-thumbnail {
@@ -4424,6 +4425,9 @@
   }
   
   .card-header {
+    display: flex;
+    justify-content: center;
+    height: 250px;
     padding: 0.75rem 1.25rem;
     margin-bottom: 0;
     background-color: rgba(0, 0, 0, 0.03);

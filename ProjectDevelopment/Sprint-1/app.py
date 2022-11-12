@@ -1,6 +1,7 @@
 from distutils.log import debug
 from flask import Flask, request,redirect,render_template, url_for, session
 import ibm_db
+import base64
 import re
 try:
     conn = ibm_db.connect("DATABASE=bludb;HOSTNAME=b1bc1829-6f45-4cd4-bef4-10cf081900bf.c1ogj3sd0tgtu0lqde00.databases.appdomain.cloud;PORT=32304;SECURITY=SSL;UID=mkb48397;PWD=4joZwnJswX0BRnwT",'','')
@@ -23,12 +24,15 @@ def home():
         # User is loggedin show them the home page
         def getTrendy():
             prods = []
-            sql = "SELECT * FROM PRODUCTS"
+            sql = "SELECT PRODUCTS.ID, PRODUCTS.NAME, PRODUCTS.PRICE, PROD_IMGS.IMAGE FROM PRODUCTS INNER JOIN PROD_IMGS ON PRODUCTS.ID = PROD_IMGS.PROD_ID"
             stmt = ibm_db.exec_immediate(conn,sql)
             result = ibm_db.fetch_assoc(stmt)
             while result != False:
-                print("The ID is : ", result["ID"])
-                print("The name is : ", result["NAME"])
+                # print("The ID is : ", result["ID"])
+                # print("The name is : ", result["NAME"])
+                # print("The image is :",result['IMAGE'])
+                image=base64.b64encode(result["IMAGE"]).decode("utf-8")
+                result.update({"IMAGE":image})
                 prods.append(result)
                 result = ibm_db.fetch_assoc(stmt)
             return prods
