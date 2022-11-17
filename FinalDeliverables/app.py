@@ -3,6 +3,12 @@ from flask import Flask, request,redirect,render_template, url_for, session
 import ibm_db
 import base64
 import re
+import sendgrid
+import os
+from dotenv import load_dotenv
+from sendgrid.helpers.mail import Mail, Email, To, Content
+from apiflask import APIFlask
+
 try:
     conn = ibm_db.connect("DATABASE=bludb;HOSTNAME=ba99a9e6-d59e-4883-8fc0-d6a8c9f7a08f.c1ogj3sd0tgtu0lqde00.databases.appdomain.cloud;PORT=31321;SECURITY=SSL;UID=lln42240;PWD=G8UYVe0Mkl6SW8nE",'','')
     print(conn)
@@ -12,10 +18,51 @@ except:
     errorState = ibm_db.conn_error()
     print(errorState)
 
-app = Flask(__name__,static_url_path='/static')
+load_dotenv()
+app = APIFlask(__name__ , spec_path='/spec')
 app.secret_key = 'smartfashionrecommender'
 
-# check user session on every request
+app.config['SERVERS'] = [
+    {
+        'description': 'Heroku deployment',
+        'url': 'https://smart-fashion-recommender06745.herokuapp.com',
+        'variables':
+        {
+            "appname":
+            {
+                "default": "SmartFashion",
+                "description": "SmartFashion is an web application with AI chat bot."
+            }
+        }
+    },
+    {
+        'description': 'local test',
+        'url': 'http://127.0.0.1:{port}',
+        'variables':
+        {
+            'port':
+            {
+                'default': "5000",
+                'description': 'local port to use'
+            }
+        }
+    }
+]
+
+@app.get('/user_profile')
+def userprofile():
+    if 'loggedin' in session:
+        sql = "SELECT USERS.USERNAME, USERS.EMAIL FROM USERS WHERE email = ?"
+        stmt1 = ibm_db.prepare(conn,sql)
+        ibm_db.bind_param(stmt1,1,session['email'])
+        ibm_db.execute(stmt1)
+        account = ibm_db.fetch_tuple(stmt1)
+        return {
+            'name': account[0],
+            'email': account[1]
+        }
+    # User is not loggedin redirect to login page
+    return redirect(url_for('login'))
 
 @app.route('/')
 def home():
@@ -38,7 +85,6 @@ def home():
             return prods
         data = getTrendy()
         return render_template('home.html', username=session['username'],Trendy_prod=data)
-
     # User is not loggedin redirect to login page
     return redirect(url_for('login'))
 
@@ -79,6 +125,8 @@ def login():
             session['loggedin'] = True
             session['id'] = account[0]
             session['username'] = account[1]
+            session['email'] = account[3]
+            print(session['email'])
             # msg = "logged in successfull" ( Need to set timoeout to display this message )
             return redirect(url_for('home'))
         else:
@@ -109,6 +157,7 @@ def sign_up():
         ibm_db.execute(stmt1)
         account = ibm_db.fetch_tuple(stmt1)
         print(account)
+        account= False
         if account:
             msg = 'Account already exists!'
         elif not re.match(r'[^@]+@[^@]+\.[^@]+', email):
@@ -126,6 +175,21 @@ def sign_up():
             ibm_db.execute(stmt)
             print(username,email,password)
             msg = 'You have successfully registered!'
+            sg = sendgrid.SendGridAPIClient(api_key=os.environ.get('SENDGRID_API_KEY'))
+            from_email = Email("smartfashionproject@gmail.com")  # Change to your verified sender
+            to_email = To(email)  # Change to your recipient
+            subject = "Welcome to SmartFashion"
+            content = Content("text/plain", "You have Successfully registered in SmartFashion!!!")
+            mail = Mail(from_email, to_email, subject, content)
+
+            # Get a JSON-ready representation of the Mail object
+            mail_json = mail.get()
+
+            # Send an HTTP POST request to /mail/send
+            response = sg.client.mail.send.post(request_body=mail_json)
+            print(response.status_code)
+            print(response.headers)
+
             return redirect(url_for('home'))
     elif request.method == 'POST':
         # Form is empty... (no POST data)
