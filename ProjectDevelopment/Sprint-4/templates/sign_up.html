@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='./css/register.css')}}">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-page">
+            <form class="form" action="signup" method="POST">
+                <h2>SignUp</h2>
+                <div>{{msg}}</div>
+                <input
+                type="text"
+                placeholder="Username"
+                class="username"
+                name="username"
+                />
+                <input
+                type="email"
+                placeholder="Email"
+                class="username"
+                name="email"
+                />
+                <input
+                type="password"
+                placeholder="password"
+                class="password"
+                name="password"
+                />
+                <button>signup</button>
+                <p class="message">Already registered? <a href="/login">Login</a></p>
+            </form>
+        </div>
+    </div>   
+</body>
+</html>
