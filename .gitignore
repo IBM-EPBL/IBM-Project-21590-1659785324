@@ -1,2 +1,4 @@
 venv/
 sql-query.txt
+.env
+__pycache__
