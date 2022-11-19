@@ -9588,3 +9588,97 @@
     }
   }
   
+
+  .profile-card {
+    box-shadow: 0px 0px 18px #ccc;
+    width: 300px;
+    text-align: center;
+    margin-right: 20px;
+    margin-bottom: 20px;
+ }
+  .profile-card:hover .profile-card-header:after, .profile-card.active .profile-card-header:after {
+    background-color: var(--primary);
+    transition: all 0.6s ease;
+ }
+  .profile-card:hover .profile-card-header img, .profile-card.active .profile-card-header img {
+    border: 5px solid var(--primary);;
+ }
+  .profile-card:hover .profile-card-footer, .profile-card.active .profile-card-footer {
+    background-color: var(--primary);
+    transition: all 0.6s ease;
+ }
+  .profile-card-header {
+    height: 150px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+ }
+  .profile-card-header:after {
+    position: absolute;
+    content: '';
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    width: 300px;
+    height: 200px;
+    z-index: -1;
+    left: 0;
+    top: 0;
+    margin-top: -80px;
+ }
+  .profile-card-header img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border: 5px solid #fff;
+    padding: 2px;
+    background-color: #fff;
+    transition: all 0.5s ease;
+ }
+  .profile-card-body {
+    height: 110px;
+ }
+  .profile-card-body h3 {
+    color: #000;
+    text-transform: capitalize;
+    font-size: 25px;
+    margin-top: 50px;
+    margin-bottom: 15px;
+    font-weight: 600;
+ }
+  .profile-card-body p {
+    color: #444;
+    text-transform: capitalize;
+ }
+  .profile-card-footer {
+    height: 50px;
+    line-height: 50px;
+ }
+  .profile-card-footer ul {
+    margin-left: 0;
+ }
+  .profile-card-footer ul li {
+    display: inline-block;
+    text-align: left;
+ }
+  .profile-card-footer ul li a {
+    color: #fff;
+    margin-left: 15px;
+ }
+  @media screen and (max-width: 650px) {
+    .wrapper {
+      flex-direction: column;
+   }
+ }
+.custom_carousle{
+  height: 300px;
+  display: flex !important;
+  justify-content: center;
+}
+.custom_carousle > img{
+  flex: 0 1 0;
+}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center mt-5">
+    <div class="profile-card active">
+        <div class="profile-card-header">
+                <img src="{{url_for('static',filename='images/avatar.webp')}}" alt=""/>
+        </div>
+      
+        <div class="profile-card-body">
+          <h3>{{profile[1]}}</h3>
+          <p>{{profile[0]}}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

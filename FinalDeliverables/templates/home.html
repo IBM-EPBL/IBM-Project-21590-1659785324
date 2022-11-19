@@ -117,6 +117,7 @@
         
     </div>
 </div>
+
 <!-- Products End -->
 {% endblock %}
 
@@ -137,7 +138,11 @@
                     </div>
                 </div>
                 <div class="card-footer d-flex justify-content-between bg-light border">
-                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                        <a href="/shop-details?id=${prod.ID}" class="btn btn-sm text-dark p-0">
+                            <i class="fas fa-eye text-primary mr-1"></i>
+                            <input type="submit" name="view_detail" style="background: none;border: none;" value="View Details"></input>
+                        </a>
+                    </form>
                     <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
                 </div>
             </div>

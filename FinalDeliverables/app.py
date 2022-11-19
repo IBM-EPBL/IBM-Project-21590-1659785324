@@ -7,7 +7,8 @@ import sendgrid
 import os
 from dotenv import load_dotenv
 from sendgrid.helpers.mail import Mail, Email, To, Content
-from apiflask import APIFlask
+from apiflask import APIFlask, Schema
+from apiflask.fields import String
 
 try:
     conn = ibm_db.connect("DATABASE=bludb;HOSTNAME=ba99a9e6-d59e-4883-8fc0-d6a8c9f7a08f.c1ogj3sd0tgtu0lqde00.databases.appdomain.cloud;PORT=31321;SECURITY=SSL;UID=lln42240;PWD=G8UYVe0Mkl6SW8nE",'','')
@@ -25,7 +26,7 @@ app.secret_key = 'smartfashionrecommender'
 app.config['SERVERS'] = [
     {
         'description': 'Heroku deployment',
-        'url': 'https://smart-fashion-recommender06745.herokuapp.com',
+        'url': 'https://smartfashion06745.herokuapp.com',
         'variables':
         {
             "appname":
@@ -49,20 +50,10 @@ app.config['SERVERS'] = [
     }
 ]
 
+
 @app.get('/user_profile')
 def userprofile():
-    if 'loggedin' in session:
-        sql = "SELECT USERS.USERNAME, USERS.EMAIL FROM USERS WHERE email = ?"
-        stmt1 = ibm_db.prepare(conn,sql)
-        ibm_db.bind_param(stmt1,1,session['email'])
-        ibm_db.execute(stmt1)
-        account = ibm_db.fetch_tuple(stmt1)
-        return {
-            'name': account[0],
-            'email': account[1]
-        }
-    # User is not loggedin redirect to login page
-    return redirect(url_for('login'))
+       return redirect(url_for('profile'))
 
 @app.route('/')
 def home():
@@ -92,9 +83,20 @@ def home():
 def shop():
     return render_template('shop.html')
 
-@app.route('/shop-details')
+@app.route('/shop-details',methods=['GET'])
 def shopDetails():
-    return render_template('shop_detail.html')
+    print()
+    args = request.args
+    type(args.to_dict())
+    print(args.get("id"))
+    sql = 'SELECT PRODUCTS.NAME, PRODUCTS.PRICE, PRODUCTS.DESC, PROD_IMGS.IMAGE FROM PRODUCTS INNER JOIN PROD_IMGS ON PRODUCTS.ID = PROD_IMGS.PROD_ID WHERE PRODUCTS.ID = ?'
+    stmt = ibm_db.prepare(conn,sql)
+    ibm_db.bind_param(stmt,1,args.get("id"))
+    ibm_db.execute(stmt)
+    product_detail = ibm_db.fetch_assoc(stmt)
+    image=base64.b64encode(product_detail["IMAGE"]).decode("utf-8")
+    product_detail.update({"IMAGE":image})
+    return render_template('shop_detail.html',detail = product_detail)
 
 @app.route('/checkout')
 def checkout():
@@ -107,6 +109,15 @@ def cart():
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
+
+@app.route('/profile')
+def profile():
+    sql = 'SELECT USERS.EMAIL, USERS.USERNAME FROM USERS WHERE ID = ?'
+    stmt = ibm_db.prepare(conn,sql)
+    ibm_db.bind_param(stmt,1,session['id'])
+    ibm_db.execute(stmt)
+    profileinfo = ibm_db.fetch_tuple(stmt)
+    return render_template('profile.html',profile=profileinfo)
     
 @app.route('/login',methods=['GET','POST'])
 def login():

@@ -23,8 +23,8 @@
         <div class="col-lg-5 pb-5">
             <div id="product-carousel" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner border">
-                    <div class="carousel-item active">
-                        <img class="w-100 h-100" src="{{url_for('static',filename='./img/product-6.jpg')}}" alt="Image">
+                    <div class="carousel-item active custom_carousle">
+                        <img class="w-100 h-100" src='data:image/png;base64,{{detail["IMAGE"]}}'alt="Image">
                     </div>
                     <!-- <div class="carousel-item">
                         <img class="w-100 h-100" src="img/product-2.jpg" alt="Image">
@@ -46,8 +46,8 @@
         </div>
 
         <div class="col-lg-7 pb-5">
-            <h3 class="font-weight-semi-bold">Colorful Stylish Shirt</h3>
-            <div class="d-flex mb-3">
+            <h3 class="font-weight-semi-bold">{{detail["NAME"]}}</h3>
+            <!-- <div class="d-flex mb-3">
                 <div class="text-primary mr-2">
                     <small class="fas fa-star"></small>
                     <small class="fas fa-star"></small>
@@ -56,10 +56,10 @@
                     <small class="far fa-star"></small>
                 </div>
                 <small class="pt-1">(50 Reviews)</small>
-            </div>
-            <h3 class="font-weight-semi-bold mb-4">$150.00</h3>
-            <p class="mb-4">Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc invidunt ipsum et, labore clita lorem magna lorem ut. Erat lorem duo dolor no sea nonumy. Accus labore stet, est lorem sit diam sea et justo, amet at lorem et eirmod ipsum diam et rebum kasd rebum.</p>
-            <div class="d-flex mb-3">
+            </div> -->
+            <h3 class="font-weight-semi-bold mb-4">{{detail["PRICE"]}}</h3>
+            <p class="mb-4">{{detail["DESC"]}}.</p>
+            <!-- <div class="d-flex mb-3">
                 <p class="text-dark font-weight-medium mb-0 mr-3">Sizes:</p>
                 <form>
                     <div class="custom-control custom-radio custom-control-inline">
@@ -83,8 +83,8 @@
                         <label class="custom-control-label" for="size-5">XL</label>
                     </div>
                 </form>
-            </div>
-            <div class="d-flex mb-4">
+            </div> -->
+            <!-- <div class="d-flex mb-4">
                 <p class="text-dark font-weight-medium mb-0 mr-3">Colors:</p>
                 <form>
                     <div class="custom-control custom-radio custom-control-inline">
@@ -108,7 +108,7 @@
                         <label class="custom-control-label" for="color-5">Green</label>
                     </div>
                 </form>
-            </div>
+            </div> -->
             <div class="d-flex align-items-center mb-4 pt-2">
                 <div class="input-group quantity mr-3" style="width: 130px;">
                     <div class="input-group-btn">
@@ -125,7 +125,7 @@
                 </div>
                 <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</button>
             </div>
-            <div class="d-flex pt-2">
+            <!-- <div class="d-flex pt-2">
                 <p class="text-dark font-weight-medium mb-0 mr-2">Share on:</p>
                 <div class="d-inline-flex">
                     <a class="text-dark px-2" href="">
@@ -141,7 +141,7 @@
                         <i class="fab fa-pinterest"></i>
                     </a>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
     <!-- <div class="row px-xl-5">
